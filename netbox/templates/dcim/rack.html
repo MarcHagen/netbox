@@ -317,9 +317,11 @@
 {% endblock %}
 
 {% block javascript %}
-<script type="text/javascript">
-$(function() {
-  $('[data-toggle="popover"]').popover()
-})
-</script>
+    <script type="text/javascript">
+    $(function () {
+        $('[data-toggle="popover"]').popover({
+            placement: 'auto right'
+        })
+    })
+    </script>
 {% endblock %}
