@@ -52,3 +52,24 @@
     </ul>
 
 </div>
+
+{% if nonracked_devices %}
+<div class="rack_zero_u">
+    <ul class="rack rack_zero_u">
+        {% for non in nonracked_devices %}
+            {% ifequal non.face face_id  %}
+                <li class="occupied h{% rack_unit_to_height rack.units %}u" style="background-color: #{{ non.device_role.color }}">
+                    <a href="{% url 'dcim:device' pk=non.pk %}" data-toggle="popover" data-trigger="hover"
+                       data-container="body" data-html="true"
+                       data-content="{{ non.device_role }}<br /> {{ non.device_type.full_name }}{% if non.asset_tag %}<br />{{ non.asset_tag }}{% endif %}{% if non.serial %}<br />{{ non.serial }}{% endif %}">
+                        {{ non }}
+                        {% if non.devicebay_count %}
+                            ({{ non.get_children.count }}/{{ non.devicebay_count }})
+                        {% endif %}
+                    </a>
+                </li>
+            {% endifequal %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}

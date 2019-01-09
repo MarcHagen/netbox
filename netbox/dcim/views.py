@@ -388,6 +388,7 @@ class RackView(View):
             'rack': rack,
             'reservations': reservations,
             'nonracked_devices': nonracked_devices,
+            'nonracked_devices_filtered': nonracked_devices.filter(face__isnull=False),
             'next_rack': next_rack,
             'prev_rack': prev_rack,
             'front_elevation': rack.get_front_elevation(),

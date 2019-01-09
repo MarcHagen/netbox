@@ -1,6 +1,7 @@
 import datetime
 import json
 import re
+import types
 
 from django import template
 from django.utils.safestring import mark_safe
@@ -185,6 +186,17 @@ def querystring(request, **kwargs):
         return '?' + querystring
     else:
         return ''
+
+
+@register.simple_tag()
+def rack_unit_to_height(rackRange):
+    if iter(rackRange):
+        count = 0
+        for u in rackRange:
+            count += 1
+        return count
+
+    raise NotImplementedError
 
 
 @register.inclusion_tag('utilities/templatetags/utilization_graph.html')

@@ -159,7 +159,7 @@ ul.rack_legend {
     list-style-type: none;
     margin-right: 6px;
     padding: 0;
-    width: 30px;
+    width: 15px;
 }
 ul.rack_legend li {
     color: #c0c0c0;
@@ -172,7 +172,8 @@ ul.rack_legend li {
 }
 div.rack_frame {
     float: left;
-    position: relative;
+    width: 80%;
+    height: 1px;
 }
 ul.rack {
     border: 2px solid #404040;
@@ -180,7 +181,10 @@ ul.rack {
     list-style-type: none;
     padding: 0;
     position: absolute;
-    width: 230px;
+    width: inherit;
+}
+div.rack_frame ul.rack {
+    border-right: 0;
 }
 ul.rack li {
     border-top: 1px solid #e0e0e0;
@@ -288,7 +292,9 @@ ul.rack li.h49u { height: 980px; }
 ul.rack li.h49u a, ul.rack li.h49u span { padding: 480px 0; }
 ul.rack li.h50u { height: 1000px; }
 ul.rack li.h50u a, ul.rack li.h50u span { padding: 490px 0; }
-ul.rack_far_face {
+ul.rack.rack_zero_u li a, ul.rack.rack_zero_u li span { padding: 0; }
+ul.rack_far_face,
+ul.rack_zero_u {
     background-color: #f7f7f7;
     z-index: 100;
 }
@@ -326,7 +332,8 @@ ul.rack_near_face li.occupied {
     border-top: 1px solid #474747;
     color: #474747;
 }
-ul.rack_near_face li.occupied:hover {
+ul.rack_near_face li.occupied:hover,
+ul.rack_zero_u li.occupied:hover {
     background-image: url('../img/tint_20.png');
 }
 ul.rack_near_face li:first-child {
@@ -337,10 +344,12 @@ ul.rack_near_face li.available a {
     display: none;
     text-decoration: none;
 }
-ul.rack_near_face li.available:hover {
+ul.rack_near_face li.available:hover,
+ul.rack_zero_u li.available:hover {
     background-color: #ffffff;
 }
-ul.rack_near_face li.available:hover a {
+ul.rack_near_face li.available:hover a,
+ul.rack_zero_u li.available:hover a {
     display: block;
 }
 ul.rack li.occupied a {
@@ -358,6 +367,23 @@ ul.rack li.occupied span {
 li.occupied + li.available {
     border-top: 1px solid #474747;
 }
+ul.rack.rack_zero_u {
+    display: flex;
+    width: auto;
+}
+div.rack_zero_u {
+    float: left;
+}
+ul.rack.rack_zero_u li {
+    border-top: 0;
+    border-left: 1px solid #e0e0e0;
+    writing-mode: vertical-rl;
+    width: 15px;
+}
+ul.rack.rack_zero_u li:first-child {
+    border-left: 0;
+}
+
 
 /* Devices */
 table.component-list td.subtable {
@@ -464,4 +490,8 @@ td .progress {
 }
 textarea {
     font-family: Consolas, Lucida Console, monospace;
+}
+.nopadding {
+   padding: 0 !important;
+   margin: 0 !important;
 }
